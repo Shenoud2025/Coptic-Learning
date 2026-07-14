@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>الحروف القبطية</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+@font-face {
+    font-family: 'CSAvaVeni';
+    src: url('./CSAvaVeni-Regular-3.ttf') format('truetype');
+}
+
+body {
+    font-family: 'CSAvaVeni', sans-serif;
+    background: #f4fbff;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+
+}
+
+body{
+
+background:linear-gradient(180deg,#79d9ff,#dff8ff);
+
+font-family:Arial,sans-serif;
+
+overflow:hidden;
+
+height:100vh;
+
+}
+
+/* السماء */
+
+.sky{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+}
+
+/* الشمس */
+
+.sun{
+
+position:absolute;
+
+top:40px;
+
+left:40px;
+
+width:120px;
+
+height:120px;
+
+border-radius:50%;
+
+background:#FFD84D;
+
+box-shadow:0 0 80px #FFD84D;
+
+animation:sun 4s infinite;
+
+}
+
+@keyframes sun{
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+}
+
+/* الغيوم */
+
+.cloud{
+
+position:absolute;
+
+background:white;
+
+border-radius:50px;
+
+opacity:.9;
+
+}
+
+.cloud:before{
+
+content:"";
+
+position:absolute;
+
+width:60px;
+
+height:60px;
+
+background:white;
+
+border-radius:50%;
+
+top:-25px;
+
+left:20px;
+
+}
+
+.cloud:after{
+
+content:"";
+
+position:absolute;
+
+width:70px;
+
+height:70px;
+
+background:white;
+
+border-radius:50%;
+
+top:-35px;
+
+right:20px;
+
+}
+
+.c1{
+
+width:170px;
+
+height:60px;
+
+top:80px;
+
+left:-200px;
+
+animation:moveCloud 35s linear infinite;
+
+}
+
+.c2{
+
+width:220px;
+
+height:70px;
+
+top:180px;
+
+left:-300px;
+
+animation:moveCloud 50s linear infinite;
+
+}
+
+@keyframes moveCloud{
+
+100%{
+
+transform:translateX(1800px);
+
+}
+
+}
+
+/* الشريط العلوي */
+
+.topBar{
+
+position:absolute;
+
+top:20px;
+
+right:20px;
+
+left:20px;
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+}
+
+.home{
+
+background:white;
+
+padding:12px 20px;
+
+border-radius:20px;
+
+cursor:pointer;
+
+font-size:20px;
+
+font-weight:bold;
+
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+
+}
+
+.stats{
+
+display:flex;
+
+gap:15px;
+
+}
+
+.box{
+
+background:white;
+
+padding:12px 20px;
+
+border-radius:20px;
+
+font-size:20px;
+
+box-shadow:0 5px 15px rgba(0,0,0,.2);
+
+}
+
+/* الكارت */
+
+.card{
+
+position:absolute;
+
+top:50%;
+
+left:50%;
+
+transform:translate(-50%,-50%);
+
+width:750px;
+
+background:white;
+
+border-radius:35px;
+
+padding:40px;
+
+box-shadow:0 20px 50px rgba(0,0,0,.25);
+
+text-align:center;
+
+animation:show .7s;
+
+}
+
+@keyframes show{
+
+from{
+
+opacity:0;
+
+transform:translate(-50%,-40%);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translate(-50%,-50%);
+
+}
+
+}
+
+.progress{
+
+width:100%;
+
+height:20px;
+
+background:#ddd;
+
+border-radius:30px;
+
+overflow:hidden;
+
+margin-bottom:30px;
+
+}
+
+.progress div{
+
+height:100%;
+
+width:5%;
+
+background:#4CAF50;
+
+transition:.5s;
+
+}
+
+.letter{
+
+font-family:CSAvaVeni;
+
+font-size:120px;
+
+color:#1d7fe2;
+
+margin-bottom:10px;
+
+}
+
+.name{
+
+font-size:40px;
+
+font-weight:bold;
+
+color:#333;
+
+margin-bottom:15px;
+
+}
+
+.word{
+font-family:CSAvaVeni;
+font-size:32px;
+color:#666;
+margin-bottom:20px;
+}
+.imageBox{
+
+width:230px;
+
+height:230px;
+
+margin:20px auto;
+
+background:#f5fbff;
+
+border-radius:30px;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+overflow:hidden;
+
+border:5px solid #8ED1FC;
+
+box-shadow:0 10px 25px rgba(0,0,0,.15);
+
+}
+
+.imageBox img{
+
+width:90%;
+
+height:90%;
+
+object-fit:contain;
+
+}
+
+.buttons{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+flex-wrap:wrap;
+
+margin-top:30px;
+
+}
+
+.btn{
+
+padding:18px 28px;
+
+border:none;
+
+border-radius:18px;
+
+cursor:pointer;
+
+font-size:22px;
+
+font-weight:bold;
+
+color:white;
+
+transition:.3s;
+
+}
+
+.btn:hover{
+
+transform:translateY(-6px) scale(1.05);
+
+}
+
+.sound{
+
+background:#03A9F4;
+
+}
+
+.learn{
+
+background:#4CAF50;
+
+}
+
+.prev{
+
+background:#FF9800;
+
+}
+
+.next{
+
+background:#9C27B0;
+
+}
+
+@media(max-width:900px){
+
+.card{
+
+width:95%;
+
+padding:25px;
+
+}
+
+.letter{
+
+font-size:90px;
+
+}
+
+.name{
+
+font-size:28px;
+
+}
+
+.word{
+
+font-size:22px;
+
+}
+.counter{
+
+margin-top:15px;
+
+font-size:22px;
+
+font-weight:bold;
+
+color:#555;
+
+}
+.imageBox{
+
+width:180px;
+
+height:180px;
+
+}
+.random{
+
+background:#009688;
+
+}
+.buttons{
+
+flex-direction:column;
+
+}
+
+.btn{
+
+width:100%;
+
+}
+
+
+
+
+}
+
+</style>
+
+<div class="sky">
+
+<div class="sun"></div>
+
+<div class="cloud c1"></div>
+
+<div class="cloud c2"></div>
+
+</div>
+
+<div class="topBar">
+
+<div class="home">
+🏠 الرئيسية
+</div>
+
+<div class="stats">
+
+<div class="box">
+⭐ <span id="points">0</span>
+</div>
+
+<div class="box">
+🏆 المستوى <span id="level">1</span>
+</div>
+
+</div>
+
+</div>
+
+<div class="card">
+
+<div class="progress">
+
+<div id="progressBar"></div>
+
+</div>
+
+<div class="counter">
+
+<span id="currentLetter">1</span>
+
+/
+
+<span id="totalLetters">32</span>
+
+</div>
+
+<div class="letter" id="letter">
+
+Ⲁ
+
+</div>
+
+<div class="name" id="letterName">
+
+ألفا
+
+</div>
+
+<div class="word" id="letterWord">
+
+Ⲁⲅⲡ - ساعة
+
+</div>
+
+<div class="imageBox">
+
+<img
+id="letterImage"
+src="images/letters/alfa.png"
+alt="">
+
+</div>
+
+<div class="buttons">
+
+<button class="btn sound" id="soundBtn">
+
+🔊 اسمع الحرف
+
+</button>
+
+<button class="btn learn" id="learnBtn">
+
+⭐ تعلمت الحرف
+
+</button>
+
+<button class="btn prev" id="prevBtn">
+
+⬅ السابق
+
+</button>
+
+<button class="btn next" id="nextBtn">
+
+التالي ➡
+
+<button class="btn random" id="randomBtn">
+
+🎲 حرف عشوائي
+
+</button>
+
+</button>
+
+</div>
+
+</div><script>
+
+//============================
+// بيانات الحروف
+//============================
+
+const letters=[
+
+{
+symbol:"Ⲁ",
+name:"ألفا",
+word:"Ⲁϫⲡ - ساعة",
+image:"alfa.png",
+audio:"alfa1111[1].mp3"
+},
+
+{
+symbol:"Ⲃ",
+name:"فيتا",
+word:"Ⲃⲉⲛⲓ - نخلة",
+image:"vita.png",
+audio:"audio/letters/vita.mp3"
+},
+
+{
+symbol:"Ⲅ",
+name:"غاما",
+word:"Ⲅⲟⲗⲅⲟ̀ⲑⲁ - الجلجثة",
+image:"gama.png",
+audio:"audio/lettimaers/gama.mp3"
+},
+
+{
+symbol:"Ⲇ",
+name:"دلتا",
+word:"ⲇⲱⲣⲟⲛ - قربان",
+image:"korban.png",
+audio:"audio/letters/delta.mp3"
+},
+
+{
+symbol:"Ⲉ",
+name:"إبسيلون",
+word:"Ⲉⲣⲏⲛⲏ - سلام",
+image:"salam.png",
+audio:"audio/letters/epsilon.mp3"
+}
+
+];
+
+//============================
+
+let current=parseInt(localStorage.getItem("currentLetter"))||0;
+
+let points=parseInt(localStorage.getItem("points"))||0;
+
+document.getElementById("points").innerHTML=points;
+
+//============================
+
+function showLetter(){
+
+let l=letters[current];
+
+document.getElementById("letter").innerHTML=l.symbol;
+
+document.getElementById("letterName").innerHTML=l.name;
+
+document.getElementById("letterWord").innerHTML=l.word;
+
+document.getElementById("letterImage").src=l.image;
+
+let progress=((current+1)/letters.length)*100;
+
+document.getElementById("progressBar").style.width=progress+"%";
+
+document.getElementById("currentLetter").innerHTML=current+1;
+
+document.getElementById("totalLetters").innerHTML=letters.length;
+
+localStorage.setItem("currentLetter",current);
+document.getElementById("randomBtn").onclick=function(){
+
+current=Math.floor(Math.random()*letters.length);
+
+showLetter();
+
+}
+}
+
+showLetter();
+
+//============================
+// التالي
+//============================
+
+document.getElementById("nextBtn").onclick=function(){
+
+if(current<letters.length-1){
+
+current++;
+
+showLetter();
+
+}
+
+}
+
+//============================
+// السابق
+//============================
+
+document.getElementById("prevBtn").onclick=function(){
+
+if(current>0){
+
+current--;
+
+showLetter();
+
+}
+
+}
+
+//============================
+// تشغيل الصوت
+//============================
+
+document.getElementById("soundBtn").onclick=function(){
+
+let audio=new Audio(letters[current].audio);
+
+audio.play().catch(()=>{
+
+alert("ضع ملف الصوت أولاً.");
+
+});
+
+}
+
+//============================
+// تعلمت الحرف
+//============================
+
+document.getElementById("learnBtn").onclick=function(){
+
+points+=10;
+
+localStorage.setItem("points",points);
+
+document.getElementById("points").innerHTML=points;
+
+if(points>=50){
+
+document.getElementById("level").innerHTML=2;
+
+}
+
+alert("🎉 أحسنت! +10 نقاط");
+
+}
+
+//============================
+// زر الرئيسية
+//============================
+
+document.querySelector(".home").onclick=function(){
+
+window.location.href="index.html";
+
+}
+
+</script>
+
+</body>
+</html>
+

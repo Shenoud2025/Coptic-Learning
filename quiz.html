@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>اختبار اللغة القبطية</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+@font-face {
+    font-family: 'CSAvaVeni';
+    src: url('./CSAvaVeni-Regular-3.ttf') format('truetype');
+}
+
+body {
+    font-family: 'CSAvaVeni', sans-serif;
+    background: #f4fbff;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+
+}
+body{
+
+background:linear-gradient(180deg,#72d6ff,#e8f9ff);
+
+font-family:Arial,sans-serif;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+height:100vh;
+
+}
+
+.card{
+
+width:700px;
+
+background:white;
+
+border-radius:30px;
+
+padding:35px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.2);
+
+text-align:center;
+
+}
+
+h1{
+
+color:#1d7fe2;
+
+margin-bottom:20px;
+
+}
+
+.info{
+
+display:flex;
+
+justify-content:space-between;
+
+margin-bottom:20px;
+
+font-size:22px;
+
+font-weight:bold;
+
+}
+
+.progress{
+
+width:100%;
+
+height:18px;
+
+background:#ddd;
+
+border-radius:20px;
+
+overflow:hidden;
+
+margin-bottom:30px;
+
+}
+
+.progress div{
+
+height:100%;
+
+width:10%;
+
+background:#4CAF50;
+
+transition:.5s;
+
+}
+
+.question{
+
+font-size:28px;
+
+margin-bottom:20px;
+
+}
+
+.letter{
+
+font-family:CSAvaVeni;
+
+font-size:100px;
+
+color:#1d7fe2;
+
+margin-bottom:20px;
+
+}
+
+.option{
+
+background:#f5f5f5;
+
+padding:15px;
+
+margin:12px 0;
+
+border-radius:15px;
+
+cursor:pointer;
+
+font-size:24px;
+
+transition:.3s;
+
+}
+
+.option:hover{
+
+background:#dff3ff;
+
+}
+
+.correct{
+
+background:#4CAF50 !important;
+
+color:white;
+
+}
+
+.wrong{
+
+background:#F44336 !important;
+
+color:white;
+
+}
+
+button{
+
+margin-top:25px;
+
+padding:15px 35px;
+
+border:none;
+
+border-radius:15px;
+
+background:#2196F3;
+
+color:white;
+
+font-size:22px;
+
+cursor:pointer;
+
+}
+
+button:hover{
+
+background:#1976D2;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>📝 اختبار الحروف القبطية</h1>
+
+<div class="info">
+
+<div>السؤال <span id="num">1</span>/5</div>
+
+<div>⭐ <span id="score">0</span></div>
+
+</div>
+
+<div class="progress">
+
+<div id="bar"></div>
+
+</div>
+
+<div class="question">
+
+ما اسم هذا الحرف؟
+
+</div>
+
+<div class="letter" id="letter">
+
+Ⲁ
+
+</div>
+
+<div id="answers"></div>
+
+<button id="next">التالي ➜</button>
+
+</div>
+
+<script>
+
+const questions=[
+
+{
+letter:"Ⲁ",
+options:["ألفا","فيتا","غاما","دلتا"],
+correct:0
+},
+
+{
+letter:"Ⲃ",
+options:["غاما","فيتا","دلتا","ألفا"],
+correct:1
+},
+
+{
+letter:"Ⲅ",
+options:["ألفا","غاما","دلتا","فيتا"],
+correct:1
+},
+
+{
+letter:"Ⲇ",
+options:["إبسيلون","دلتا","غاما","فيتا"],
+correct:1
+},
+
+{
+letter:"Ⲉ",
+options:["ألفا","اي","إبسيلون","فيتا"],
+correct:1
+}
+
+];
+
+let current=0;
+
+let score=0;
+
+function showQuestion(){
+
+document.getElementById("num").innerHTML=current+1;
+
+document.getElementById("letter").innerHTML=questions[current].letter;
+
+document.getElementById("bar").style.width=((current+1)/questions.length*100)+"%";
+
+let html="";
+
+questions[current].options.forEach((o,i)=>{
+
+html+=`<div class="option" onclick="check(this,${i})">${o}</div>`;
+
+});
+
+document.getElementById("answers").innerHTML=html;
+
+}
+
+function check(element,index){
+
+document.querySelectorAll(".option").forEach(x=>x.onclick=null);
+
+if(index==questions[current].correct){
+
+element.classList.add("correct");
+
+score+=10;
+
+document.getElementById("score").innerHTML=score;
+
+}else{
+
+element.classList.add("wrong");
+
+document.querySelectorAll(".option")[questions[current].correct].classList.add("correct");
+
+}
+
+}
+
+document.getElementById("next").onclick=function(){
+
+current++;
+
+if(current>=questions.length){
+
+alert("🎉 انتهى الاختبار\n\nدرجتك = "+score);
+
+window.location.href="index.html";
+
+return;
+
+}
+
+showQuestion();
+
+}
+
+showQuestion();
+
+</script>
+
+</body>
+</html>

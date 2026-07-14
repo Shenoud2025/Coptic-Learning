@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Coptic Kids</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+@font-face{
+font-family:CSAvaVeni;
+src:url("fonts/CSAvaVeni-Regular-3.ttf");
+}
+
+body{
+
+font-family:Arial,sans-serif;
+overflow:hidden;
+
+background:linear-gradient(
+180deg,
+#72d6ff 0%,
+#bcefff 40%,
+#dff8ff 100%
+);
+
+height:100vh;
+
+}
+
+/* =======================
+السحب
+======================= */
+
+.cloud{
+
+position:absolute;
+
+background:white;
+
+border-radius:100px;
+
+opacity:.9;
+
+}
+
+.cloud::before{
+
+content:"";
+
+position:absolute;
+
+background:white;
+
+width:70px;
+
+height:70px;
+
+border-radius:50%;
+
+left:10px;
+
+top:-30px;
+
+}
+
+.cloud::after{
+
+content:"";
+
+position:absolute;
+
+background:white;
+
+width:90px;
+
+height:90px;
+
+border-radius:50%;
+
+right:20px;
+
+top:-40px;
+
+}
+
+.c1{
+
+width:180px;
+height:60px;
+
+top:60px;
+
+left:-200px;
+
+animation:cloudMove 35s linear infinite;
+
+}
+
+.c2{
+
+width:230px;
+height:70px;
+
+top:170px;
+
+left:-300px;
+
+animation:cloudMove 45s linear infinite;
+
+animation-delay:8s;
+
+}
+
+.c3{
+
+width:150px;
+height:55px;
+
+top:270px;
+
+left:-250px;
+
+animation:cloudMove 30s linear infinite;
+
+animation-delay:15s;
+
+}
+
+@keyframes cloudMove{
+
+0%{
+
+transform:translateX(0);
+
+}
+
+100%{
+
+transform:translateX(1700px);
+
+}
+
+}
+
+/* =======================
+الشمس
+======================= */
+
+.sun{
+
+position:absolute;
+
+width:120px;
+
+height:120px;
+
+background:#FFD84D;
+
+border-radius:50%;
+
+right:80px;
+
+top:40px;
+
+box-shadow:0 0 70px #FFD84D;
+
+animation:sun 4s ease-in-out infinite;
+
+}
+
+@keyframes sun{
+
+0%{
+
+transform:scale(1);
+
+}
+
+50%{
+
+transform:scale(1.08);
+
+}
+
+100%{
+
+transform:scale(1);
+
+}
+
+}
+
+/* =======================
+العشب
+======================= */
+
+.grass{
+
+position:absolute;
+
+bottom:0;
+
+width:100%;
+
+height:170px;
+
+background:#59d85d;
+
+border-top-left-radius:100px;
+
+border-top-right-radius:100px;
+
+}
+
+/* =======================
+الحاوية
+======================= */
+
+.container{
+
+position:absolute;
+
+width:100%;
+
+height:100%;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+}
+
+.card{
+
+width:700px;
+
+background:white;
+
+border-radius:35px;
+
+padding:40px;
+
+box-shadow:0 20px 40px rgba(0,0,0,.2);
+
+text-align:center;
+
+animation:show .8s;
+
+}
+
+@keyframes show{
+
+from{
+
+opacity:0;
+
+transform:translateY(50px);
+
+}
+
+to{
+
+opacity:1;
+
+transform:translateY(0);
+
+}
+
+}
+
+.logo{
+
+font-size:65px;
+
+font-family:CSAvaVeni;
+
+color:#1d7fe2;
+
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+font-size:28px;
+
+margin-bottom:30px;
+
+color:#444;
+
+}
+.title{
+
+font-size:55px;
+
+font-weight:bold;
+
+color:#1d7fe2;
+
+margin-bottom:10px;
+
+}
+
+.desc{
+
+font-size:22px;
+
+color:#666;
+
+margin-bottom:35px;
+
+line-height:1.8;
+
+}
+
+.nameBox{
+
+margin-bottom:30px;
+
+}
+
+.nameBox input{
+
+width:90%;
+
+padding:18px;
+
+font-size:22px;
+
+border:3px solid #87CEFA;
+
+border-radius:18px;
+
+outline:none;
+
+transition:.3s;
+
+text-align:center;
+
+}
+
+.nameBox input:focus{
+
+border-color:#ff9800;
+
+transform:scale(1.03);
+
+}
+
+.avatarTitle{
+
+font-size:24px;
+
+margin-bottom:15px;
+
+color:#555;
+
+}
+
+.avatars{
+
+display:flex;
+
+justify-content:center;
+
+gap:20px;
+
+margin-bottom:35px;
+
+flex-wrap:wrap;
+
+}
+
+.avatar{
+
+width:90px;
+
+height:90px;
+
+border-radius:50%;
+
+background:#f4f4f4;
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+font-size:45px;
+
+cursor:pointer;
+
+transition:.3s;
+
+border:4px solid transparent;
+
+}
+
+.avatar:hover{
+
+transform:scale(1.15);
+
+}
+
+.avatar.active{
+
+border-color:#4CAF50;
+
+background:#E8F5E9;
+
+}
+
+.menu{
+
+display:grid;
+
+grid-template-columns:repeat(2,1fr);
+
+gap:18px;
+
+margin-top:20px;
+
+}
+
+.menu button{
+
+padding:20px;
+
+font-size:24px;
+
+border:none;
+
+border-radius:20px;
+
+cursor:pointer;
+
+transition:.3s;
+
+color:white;
+
+font-weight:bold;
+
+}
+
+.menu button:hover{
+
+transform:translateY(-8px) scale(1.05);
+
+}
+
+.learn{
+
+background:#4CAF50;
+
+}
+
+.games{
+
+background:#FF9800;
+
+}
+
+.quiz{
+
+background:#9C27B0;
+
+}
+
+.settings{
+
+background:#03A9F4;
+
+}
+
+.footer{
+
+margin-top:30px;
+
+font-size:18px;
+
+color:#888;
+
+}
+
+@media(max-width:900px){
+
+.card{
+
+width:95%;
+
+padding:25px;
+
+}
+
+.logo{
+
+font-size:40px;
+
+}
+
+.title{
+
+font-size:34px;
+
+}
+
+.subtitle{
+
+font-size:20px;
+
+}
+
+.menu{
+
+grid-template-columns:1fr;
+
+}
+
+}
+
+</style>
+<div class="sun"></div>
+
+<div class="cloud c1"></div>
+<div class="cloud c2"></div>
+<div class="cloud c3"></div>
+
+<div class="grass"></div>
+
+<div class="container">
+
+<div class="card">
+
+<div class="logo">Ⲧⲙⲉⲧⲣⲉⲙⲛ̀ⲭⲏⲙⲓ</div>
+
+<div class="title">Coptic Kids</div>
+
+<div class="subtitle">
+تعلم اللغة القبطية بطريقة ممتعة
+</div>
+
+<div class="desc">
+مرحبًا بك 👋<br>
+اكتب اسمك واختر شخصيتك ثم ابدأ المغامرة.
+</div>
+
+<div class="nameBox">
+
+<input
+type="text"
+id="playerName"
+placeholder="اكتب اسمك هنا">
+
+</div>
+
+<div class="avatarTitle">
+اختر شخصيتك
+</div>
+
+<div class="avatars">
+
+<div class="avatar active">👦</div>
+
+<div class="avatar">👧</div>
+
+<div class="avatar">🧒</div>
+
+<div class="avatar">😊</div>
+
+</div>
+
+<div class="menu">
+
+<button class="learn">
+🔤 تعلم الحروف
+</button>
+
+<button class="games">
+🎮 الألعاب
+</button>
+
+<button class="quiz">
+📝 الاختبارات
+</button>
+
+<button class="settings">
+⚙️ الإعدادات
+</button>
+
+</div>
+<script>
+
+// ===============================
+// اختيار الشخصية
+// ===============================
+
+const avatars = document.querySelectorAll(".avatar");
+
+let selectedAvatar = "👦";
+
+avatars.forEach(avatar=>{
+
+avatar.onclick=function(){
+
+avatars.forEach(a=>a.classList.remove("active"));
+
+this.classList.add("active");
+
+selectedAvatar=this.innerHTML;
+
+}
+
+});
+
+// ===============================
+// المؤثر الصوتي
+// ===============================
+
+const clickSound=new Audio("audio/effects/click.mp3");
+
+function playClick(){
+
+clickSound.currentTime=0;
+
+clickSound.play().catch(()=>{});
+
+}
+
+// ===============================
+// جميع الأزرار
+// ===============================
+
+document.querySelectorAll("button").forEach(btn=>{
+
+btn.onclick=function(){
+
+playClick();
+
+}
+
+});
+
+// ===============================
+// حفظ البيانات
+// ===============================
+
+const input=document.getElementById("playerName");
+
+if(localStorage.getItem("playerName")){
+
+input.value=localStorage.getItem("playerName");
+
+}
+
+if(localStorage.getItem("avatar")){
+
+selectedAvatar=localStorage.getItem("avatar");
+
+avatars.forEach(a=>{
+
+if(a.innerHTML==selectedAvatar){
+
+a.classList.add("active");
+
+}else{
+
+a.classList.remove("active");
+
+}
+
+});
+
+}
+
+// ===============================
+// زر تعلم الحروف
+// ===============================
+
+document.querySelector(".learn").onclick=function(){
+
+playClick();
+
+let name=input.value.trim();
+
+if(name==""){
+
+alert("من فضلك اكتب اسمك أولاً 😊");
+
+return;
+
+}
+
+localStorage.setItem("playerName",name);
+
+localStorage.setItem("avatar",selectedAvatar);
+
+window.location.href="letters.html";
+
+}
+
+// ===============================
+// زر الألعاب
+// ===============================
+
+document.querySelector(".games").onclick = function () {
+
+    playClick();
+
+    let name = input.value.trim();
+
+    if(name==""){
+
+        alert("من فضلك اكتب اسمك أولاً 😊");
+
+        return;
+
+    }
+
+    localStorage.setItem("playerName",name);
+    localStorage.setItem("avatar",selectedAvatar);
+
+    window.location.href = "games.html";
+
+}
+
+// ===============================
+// زر الاختبارات
+// ===============================
+
+document.querySelector(".quiz").onclick = function () {
+
+    playClick();
+
+    let name = input.value.trim();
+
+    if(name==""){
+
+        alert("من فضلك اكتب اسمك أولاً 😊");
+
+        return;
+
+    }
+
+    localStorage.setItem("playerName",name);
+    localStorage.setItem("avatar",selectedAvatar);
+
+    window.location.href = "quiz.html";
+
+}
+
+// ===============================
+// زر الإعدادات
+// ===============================
+
+document.querySelector(".settings").onclick = function () {
+
+    playClick();
+
+    let name = input.value.trim();
+
+    if(name==""){
+
+        alert("من فضلك اكتب اسمك أولاً 😊");
+
+        return;
+
+    }
+
+    localStorage.setItem("playerName", name);
+    localStorage.setItem("avatar", selectedAvatar);
+
+    window.location.href = "settings.html";
+
+}
+
+// ===============================
+// حركة بسيطة للكارت
+// ===============================
+
+const card=document.querySelector(".card");
+
+document.addEventListener("mousemove",(e)=>{
+
+let x=(window.innerWidth/2-e.clientX)/35;
+
+let y=(window.innerHeight/2-e.clientY)/35;
+
+card.style.transform=`rotateY(${x}deg) rotateX(${-y}deg)`;
+
+});
+
+document.addEventListener("mouseleave",()=>{
+
+card.style.transform="rotateX(0deg) rotateY(0deg)";
+
+});
+
+</script>
+
+</body>
+
+</html>
+<div class="footer">
+
+الإصدار 1.0<br>
+
+© Shenouda Magdy
+
+</div>
+
+</div>
+
+</div>

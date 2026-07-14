@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>الإعدادات</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+
+background:linear-gradient(180deg,#72d6ff,#dff8ff);
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+height:100vh;
+
+}
+
+.card{
+
+width:650px;
+
+background:white;
+
+border-radius:30px;
+
+padding:35px;
+
+box-shadow:0 15px 40px rgba(0,0,0,.2);
+
+}
+
+h1{
+
+text-align:center;
+
+color:#1d7fe2;
+
+margin-bottom:30px;
+
+}
+
+.item{
+
+display:flex;
+
+justify-content:space-between;
+
+align-items:center;
+
+padding:18px;
+
+margin:15px 0;
+
+background:#f4fbff;
+
+border-radius:15px;
+
+font-size:22px;
+
+}
+
+button{
+
+padding:12px 25px;
+
+border:none;
+
+border-radius:12px;
+
+cursor:pointer;
+
+font-size:18px;
+
+background:#2196F3;
+
+color:white;
+
+}
+
+button:hover{
+
+background:#1976D2;
+
+}
+
+input[type=range]{
+
+width:180px;
+
+}
+
+.back{
+
+margin-top:30px;
+
+width:100%;
+
+padding:15px;
+
+font-size:22px;
+
+background:#4CAF50;
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="card">
+
+<h1>⚙️ الإعدادات</h1>
+
+<div class="item">
+
+<span>🌙 الوضع الليلي</span>
+
+<button id="darkBtn">تشغيل</button>
+
+</div>
+
+<div class="item">
+
+<span>🔊 مستوى الصوت</span>
+
+<input type="range" id="volume" min="0" max="100" value="100">
+
+</div>
+
+<div class="item">
+
+<span>🧹 إعادة تعيين النقاط</span>
+
+<button id="resetBtn">إعادة</button>
+
+</div>
+
+<div class="item">
+
+<span>👤 اسم الطفل</span>
+
+<span id="player"></span>
+
+</div>
+
+<button class="back" onclick="window.location.href='index.html'">
+
+🏠 العودة للرئيسية
+
+</button>
+
+</div>
+
+<script>
+
+document.getElementById("player").innerHTML=
+
+localStorage.getItem("playerName") || "زائر";
+
+document.getElementById("resetBtn").onclick=function(){
+
+if(confirm("هل تريد حذف النقاط؟")){
+
+localStorage.removeItem("points");
+
+alert("تم حذف النقاط");
+
+}
+
+}
+
+document.getElementById("darkBtn").onclick=function(){
+
+document.body.style.background="#222";
+
+document.body.style.color="white";
+
+}
+
+document.getElementById("volume").oninput=function(){
+
+localStorage.setItem("volume",this.value);
+
+}
+
+</script>
+
+</body>
+
+</html>
